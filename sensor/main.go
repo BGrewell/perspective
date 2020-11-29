@@ -45,6 +45,5 @@ func main() {
 			fmt.Println("payload: [none]")
 			fmt.Printf("\n")
 		}
-
 	}
 }

@@ -26,18 +26,12 @@ func DelNatRules() (err error) {
 }
 
 func AddTProxyRule(proto string, port int, mark int) (err error) {
-	//ip, err := helpers.GetPublicIp()
-	//if err != nil {
-	//	return err
-	//}
-	//fmt.Println(ip)
 	cmd := fmt.Sprintf("iptables -t mangle -A PREROUTING -p %s ! --dport 22 -j TPROXY --on-port %d --on-ip 0.0.0.0 --tproxy-mark 0x%x/0x%x", proto, port, mark, mark)
 	_, err = helpers.ExecuteCommand(cmd)
 	return err
 }
 
 func DelTProxyRule(proto string, port int, mark int) (err error) {
-	//ip, err := helpers.GetPublicIp()
 	cmd := fmt.Sprintf("iptables -t mangle -D PREROUTING -p %s ! --dport 22 -j TPROXY --on-port %d --on-ip 0.0.0.0 --tproxy-mark 0x%x/0x%x", proto, port, mark, mark)
 	_, err = helpers.ExecuteCommand(cmd)
 	return err
