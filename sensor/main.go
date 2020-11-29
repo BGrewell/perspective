@@ -37,7 +37,7 @@ func main() {
 
 	for {
 		conn := <- connChan
-		fmt.Printf("connection from: %s:%d -> %s:%d\n", conn.SrcIP, conn.SrcPort, conn.DstIP, conn.DstPort)git add
+		fmt.Printf("connection from: %s:%d -> %s:%d\n", conn.SrcIP, conn.SrcPort, conn.DstIP, conn.DstPort)
 		if conn.CollectorPayload != "" {
 			fmt.Printf("payload: %s\n", conn.CollectorPayload)
 			fmt.Printf("\n")

@@ -20,15 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32560d29-3266-422c-ba7b-e9a8f815a353" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/collector/basic.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/collector/basic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/collector/collector.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/collector/collector.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/iptables/iptable.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/iptables/iptable.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sensor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/network/connattempt.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/network/connattempt.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/network/tcpsensor.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/network/tcpsensor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/routes/route.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/routes/route.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +70,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
