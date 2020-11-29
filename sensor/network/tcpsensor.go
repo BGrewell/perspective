@@ -3,6 +3,7 @@ package network
 import (
 	"context"
 	"fmt"
+	"github.com/BGrewell/perspective/sensor/collector"
 	"net"
 	"os"
 	"strconv"
@@ -57,14 +58,25 @@ func (s *TcpSensor) handleConnections(ctx context.Context) {
 				if err != nil {
 					s.errChan <- err
 				}
-				addrParts := strings.Split(conn.LocalAddr().String(), ":")
-				port, _ := strconv.Atoi(addrParts[1])
+				srcParts := strings.Split(conn.RemoteAddr().String(), ":")
+				dstParts := strings.Split(conn.LocalAddr().String(), ":")
+				srcPort, _ := strconv.Atoi(srcParts[1])
+				dstPort, _ := strconv.Atoi(dstParts[1])
+
+				basic := collector.BasicCollector{}
+				payload, err := basic.Handle(conn)
+				if err != nil {
+					//log.Errorf("failed to gather data: %v\n", err)
+				}
 				c := &ConnectionAttempt{
-					IP:       addrParts[0], // because we are TPROXY'ing the connection the local address is actually the originator of the connection
-					Port:     port,
-					Location: "ip location not implemented",
-					Lat:      0,
-					Lon:      0,
+					SrcIP:            srcParts[0],
+					SrcPort:          srcPort,
+					DstIP:            dstParts[0],
+					DstPort:		  dstPort,
+					Location:         "ip location not implemented",
+					Lat:              0,
+					Lon:              0,
+					CollectorPayload: payload,
 				}
 				s.connChan <- c
 		}

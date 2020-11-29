@@ -1,9 +1,12 @@
 package network
 
 type ConnectionAttempt struct {
-	IP string
-	Port int
+	SrcIP string
+	SrcPort int
+	DstIP string
+	DstPort int
 	Location string
 	Lat float32
 	Lon float32
+	CollectorPayload string
 }
