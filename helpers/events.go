@@ -12,7 +12,7 @@ type SensorEvent struct {
 	SourcePort      int               `json:"source_port" yaml:"source_port" xml:"source_port"`
 	DestinationPort int               `json:"destination_port" yaml:"destination_port" xml:"destination_port"`
 	Location        EventLocationData `json:"location" yaml:"location" xml:"location"`
-	CollectorData   string            `json:"collector_data" yaml:"collector_data" xml:"collector_data"`
+	CollectorData   interface{}            `json:"collector_data" yaml:"collector_data" xml:"collector_data"`
 }
 
 func NewSensorEvent(conn *ConnectionAttempt, record *geoip2.City) (event *SensorEvent, err error) {

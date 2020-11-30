@@ -5,5 +5,5 @@ type ConnectionAttempt struct {
 	SrcPort       int    `json:"src_port" yaml:"src_port" xml:"src_port"`
 	DstIP         string `json:"dst_ip" yaml:"dst_ip" xml:"dst_ip"`
 	DstPort       int    `json:"dst_port" yaml:"dst_port" xml:"dst_port"`
-	CollectorData string `json:"collector_data" yaml:"collector_data" xml:"collector_data"`
+	CollectorData interface{} `json:"collector_data" yaml:"collector_data" xml:"collector_data"`
 }
