@@ -1,8 +1,12 @@
 package helpers
 
-import "github.com/oschwald/geoip2-golang"
+import (
+	"github.com/oschwald/geoip2-golang"
+	"time"
+)
 
 type SensorEvent struct {
+	EventTime       string            `json:"event_time" yaml:"event_time" xml:"event_time"`
 	SourceIP        string            `json:"source_ip" yaml:"source_ip" xml:"source_ip"`
 	DestinationIP   string            `json:"destination_ip" yaml:"destination_ip" xml:"destination_ip"`
 	SourcePort      int               `json:"source_port" yaml:"source_port" xml:"source_port"`
@@ -13,6 +17,7 @@ type SensorEvent struct {
 
 func NewSensorEvent(conn *ConnectionAttempt, record *geoip2.City) (event *SensorEvent, err error) {
 	se := &SensorEvent{
+		EventTime:       time.Now().Format(time.RFC3339Nano),
 		SourceIP:        conn.SrcIP,
 		DestinationIP:   conn.DstIP,
 		SourcePort:      conn.SrcPort,

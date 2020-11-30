@@ -21,24 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="32560d29-3266-422c-ba7b-e9a8f815a353" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/sensor" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sensor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collector/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/collector/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/conn.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/events.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/events.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/build.sh" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/build.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpc/proto/perspective.proto" beforeDir="false" afterPath="$PROJECT_DIR$/rpc/proto/perspective.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/collector/basic.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/collector/basic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/geoip/GeoLite2-City_20201124.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/geoip/geoip.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/geoip/geoip.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/iptables/iptable.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/iptables/iptable.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/network/sensor.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/network/sensor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/network/tcpsensor.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/network/tcpsensor.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
