@@ -3,6 +3,7 @@ package network
 import (
 	"context"
 	"fmt"
+	"github.com/BGrewell/perspective/helpers"
 	"github.com/BGrewell/perspective/sensor/collector"
 	"net"
 	"os"
@@ -13,21 +14,21 @@ import (
 )
 
 type TcpSensor struct {
-	listenAddr string
-	listenPort int
-	connChan chan <-*ConnectionAttempt
-	errChan chan <-error
-	running bool
-	listener *net.TCPListener
+	listenAddr string                            `json:"listen_addr" yaml:"listen_addr" xml:"listen_addr"`
+	listenPort int                               `json:"listen_port" yaml:"listen_port" xml:"listen_port"`
+	connChan   chan<- *helpers.ConnectionAttempt `json:"conn_chan" yaml:"conn_chan" xml:"conn_chan"`
+	errChan    chan<- error                      `json:"err_chan" yaml:"err_chan" xml:"err_chan"`
+	running    bool                              `json:"running" yaml:"running" xml:"running"`
+	listener   *net.TCPListener                  `json:"listener" yaml:"listener" xml:"listener"`
 }
 
-func (s *TcpSensor) Start(addr string, port int, ctx context.Context, conns chan<- *ConnectionAttempt, errs chan<-error) (err error) {
+func (s *TcpSensor) Start(addr string, port int, ctx context.Context, conns chan<- *helpers.ConnectionAttempt, errs chan<- error) (err error) {
 	s.connChan = conns
 	s.errChan = errs
 	s.listenAddr = addr
 	s.listenPort = port
 	a := &net.TCPAddr{
-		IP: net.ParseIP(addr),
+		IP:   net.ParseIP(addr),
 		Port: port,
 	}
 	err = s.listenTcp("tcp", a)
@@ -51,34 +52,31 @@ func (s *TcpSensor) Stop() (err error) {
 func (s *TcpSensor) handleConnections(ctx context.Context) {
 	for s.running {
 		select {
-		case <- ctx.Done():
+		case <-ctx.Done():
 			return
-			default:
-				conn, err := s.acceptTcp()
-				if err != nil {
-					s.errChan <- err
-				}
-				srcParts := strings.Split(conn.RemoteAddr().String(), ":")
-				dstParts := strings.Split(conn.LocalAddr().String(), ":")
-				srcPort, _ := strconv.Atoi(srcParts[1])
-				dstPort, _ := strconv.Atoi(dstParts[1])
+		default:
+			conn, err := s.acceptTcp()
+			if err != nil {
+				s.errChan <- err
+			}
+			srcParts := strings.Split(conn.RemoteAddr().String(), ":")
+			dstParts := strings.Split(conn.LocalAddr().String(), ":")
+			srcPort, _ := strconv.Atoi(srcParts[1])
+			dstPort, _ := strconv.Atoi(dstParts[1])
 
-				basic := collector.BasicCollector{}
-				payload, err := basic.Handle(conn)
-				if err != nil {
-					//log.Errorf("failed to gather data: %v\n", err)
-				}
-				c := &ConnectionAttempt{
-					SrcIP:            srcParts[0],
-					SrcPort:          srcPort,
-					DstIP:            dstParts[0],
-					DstPort:		  dstPort,
-					Location:         "ip location not implemented",
-					Lat:              0,
-					Lon:              0,
-					CollectorPayload: payload,
-				}
-				s.connChan <- c
+			basic := collector.BasicCollector{}
+			payload, err := basic.Handle(conn)
+			if err != nil {
+				//log.Errorf("failed to gather data: %v\n", err)
+			}
+			c := &helpers.ConnectionAttempt{
+				SrcIP:         srcParts[0],
+				SrcPort:       srcPort,
+				DstIP:         dstParts[0],
+				DstPort:       dstPort,
+				CollectorData: payload,
+			}
+			s.connChan <- c
 		}
 	}
 }

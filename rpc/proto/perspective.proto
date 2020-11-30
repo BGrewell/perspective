@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+// [START csharp_declaration]
+option csharp_namespace = "BenGrewell.perspective.protobuf";
+// [END csharp_declaration]
+
+// [START go_declaration]
+option go_package = "github.com/BGrewell/perspective/rpc/grpc/go;_go";
+// [END go_declaration]
+
+package perspective;
+
+service Events {
+  rpc GetEvents(EventsRequest) returns (EventsResponse) {}
+}
+
+message EventsRequest {
+}
+
+message EventsResponse {
+  string nodeName = 1;
+  string timestamp = 2;
+  uint32 event_count = 10;
+  uint32 missed_events = 11;
+  repeated SensorEvent events = 12;
+}
+
+message SensorEvent {
+  string source_ip = 1;
+  string destination_ip = 2;
+  int32 source_port = 3;
+  int32 destination_port = 4;
+  EventLocationData location = 5;
+  string collector_data = 6;
+}
+
+message EventLocationData {
+  string country = 1;
+  string city = 2;
+  uint32 metro = 3;
+  float latitude = 4;
+  float longitude = 5;
+  uint32 accuracy_radius = 6;
+  string timezone = 7;
+  repeated string subdivisions = 8;
+
+}

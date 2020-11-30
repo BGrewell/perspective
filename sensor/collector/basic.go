@@ -6,7 +6,7 @@ import (
 )
 
 type BasicData struct {
-	Payload string `json:"payload"`
+	Payload []byte `json:"payload"`
 }
 
 type BasicCollector struct {
@@ -20,7 +20,7 @@ func (bc *BasicCollector) Handle(conn net.Conn) (jsonPayload string, err error) 
 	if err != nil {
 		return "", err
 	}
-	payload.Payload = string(buffer[:read])
+	payload.Payload = buffer[:read]
 	jsonByte, err := json.Marshal(payload)
 	return string(jsonByte), err
 }
