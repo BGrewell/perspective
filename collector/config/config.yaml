@@ -1,0 +1,20 @@
+---
+server_url: attackmap.grewelltech.com
+server_port: 9002
+ssl_cert_file: /var/www/somewhere
+ssl_key_file: /var/www/somewhere
+sensors:
+  -
+    name: datacenter_x
+    host: a.hosts.k3rn3l.io
+    latitude: 45.0
+    longitude: 56.0
+    tags:
+      - digitalocean
+  -
+    name: datacenter_y
+    host: b.hosts.k3rn3l.io
+    latitude: 64.0
+    longitude: -122.0
+    tags:
+      - digitalocean

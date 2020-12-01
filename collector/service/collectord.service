@@ -1,0 +1,20 @@
+[Unit]
+Description=Collector Service Daemon
+ConditionPathExists=/opt/collectord/bin/collectord
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+Restart=on-failure
+RestartSec=10
+StartLimitInterval=60
+WorkingDirectory=/opt/collectord/bin
+ExecStart=/opt/collectord/bin/collectord
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=collectord
+
+[Install]
+WantedBy=multi-user.target
