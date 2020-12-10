@@ -8,8 +8,8 @@ import (
 	"github.com/BGrewell/perspective/sensor/iptables"
 	"github.com/BGrewell/perspective/sensor/network"
 	"github.com/BGrewell/perspective/sensor/routes"
-	log "github.com/sirupsen/logrus"
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 	"net/http"
 	"time"
 )
@@ -23,13 +23,6 @@ var (
 	discardedEvents int
 )
 
-type EventsResponse struct {
-	Date string `json:"date"`
-	EventCount int `json:"events_count"`
-	MissedEvents int `json:"events_missed"`
-	Events []*helpers.SensorEvent `json:"events"`
-}
-
 func EventsHandler(c *gin.Context) {
 	eventCount := len(eventChan)
 	events := make([]*helpers.SensorEvent, eventCount)
@@ -38,7 +31,7 @@ func EventsHandler(c *gin.Context) {
 	for idx := 0; idx < eventCount; idx++ {
 		events[idx] = <-eventChan
 	}
-	er := &EventsResponse{
+	er := &helpers.EventsResponse{
 		Date:         time.Now().Format(time.RFC3339Nano),
 		EventCount:   eventCount,
 		MissedEvents: eventsMissed,

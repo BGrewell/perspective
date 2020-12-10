@@ -20,12 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32560d29-3266-422c-ba7b-e9a8f815a353" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/collector/core/sensor.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/sensor" beforeDir="false" afterPath="$PROJECT_DIR$/bin/sensor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helpers/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/conn.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collector/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/collector/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collector/core/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/collector/core/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/collector/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/collector/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/helpers/events.go" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/events.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/collector/basic.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/collector/basic.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sensor/collector/collector.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/collector/collector.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sensor/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/sensor/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +65,22 @@
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RunManager">
+    <configuration name="go build github.com/BGrewell/perspective/collector" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="perspective" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/collector/main.go" />
+      <package value="github.com/BGrewell/perspective/collector" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build github.com/BGrewell/perspective/collector" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
@@ -103,6 +122,22 @@
       <screen x="0" y="27" width="3840" height="1506" />
     </state>
     <state x="738" y="538" width="424" height="483" key="FileChooserDialogImpl/0.27.3840.1506@0.27.3840.1506" timestamp="1604971625834" />
+    <state width="1874" height="428" key="GridCell.Tab.0.bottom" timestamp="1607572278648">
+      <screen x="0" y="27" width="3840" height="1506" />
+    </state>
+    <state width="1874" height="428" key="GridCell.Tab.0.bottom/0.27.3840.1506@0.27.3840.1506" timestamp="1607572278648" />
+    <state width="1874" height="428" key="GridCell.Tab.0.center" timestamp="1607572278647">
+      <screen x="0" y="27" width="3840" height="1506" />
+    </state>
+    <state width="1874" height="428" key="GridCell.Tab.0.center/0.27.3840.1506@0.27.3840.1506" timestamp="1607572278647" />
+    <state width="1874" height="428" key="GridCell.Tab.0.left" timestamp="1607572278647">
+      <screen x="0" y="27" width="3840" height="1506" />
+    </state>
+    <state width="1874" height="428" key="GridCell.Tab.0.left/0.27.3840.1506@0.27.3840.1506" timestamp="1607572278647" />
+    <state width="1874" height="428" key="GridCell.Tab.0.right" timestamp="1607572278647">
+      <screen x="0" y="27" width="3840" height="1506" />
+    </state>
+    <state width="1874" height="428" key="GridCell.Tab.0.right/0.27.3840.1506@0.27.3840.1506" timestamp="1607572278647" />
     <state x="781" y="345" key="SettingsEditor" timestamp="1606684398193">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

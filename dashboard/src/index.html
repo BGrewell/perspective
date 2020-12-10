@@ -61,9 +61,9 @@
 
         // Add image series
         var imageSeries = chart.series.push(new am4maps.MapImageSeries());
-        imageSeries.mapImages.template.propertyFields.longitude = "longitude";
-        imageSeries.mapImages.template.propertyFields.latitude = "latitude";
-        imageSeries.mapImages.template.tooltipText = "{title}";
+        imageSeries.mapImages.template.propertyFields.longitude = "event.location.longitude";
+        imageSeries.mapImages.template.propertyFields.latitude = "event.location.latitude";
+        imageSeries.mapImages.template.tooltipText = "{event.location.country}";
         imageSeries.mapImages.template.propertyFields.url = "url";
 
         var circle = imageSeries.mapImages.template.createChild(am4core.Circle);
@@ -88,7 +88,6 @@
         }
 
         var colorSet = new am4core.ColorSet();
-
         imageSeries.data = [ {
             "title": "Brussels",
             "latitude": 50.8371,

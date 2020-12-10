@@ -5,6 +5,13 @@ import (
 	"time"
 )
 
+type EventsResponse struct {
+	Date         string         `json:"date"`
+	EventCount   int            `json:"events_count"`
+	MissedEvents int            `json:"events_missed"`
+	Events       []*SensorEvent `json:"events"`
+}
+
 type SensorEvent struct {
 	EventTime       string            `json:"event_time" yaml:"event_time" xml:"event_time"`
 	SourceIP        string            `json:"source_ip" yaml:"source_ip" xml:"source_ip"`
@@ -12,7 +19,7 @@ type SensorEvent struct {
 	SourcePort      int               `json:"source_port" yaml:"source_port" xml:"source_port"`
 	DestinationPort int               `json:"destination_port" yaml:"destination_port" xml:"destination_port"`
 	Location        EventLocationData `json:"location" yaml:"location" xml:"location"`
-	CollectorData   interface{}            `json:"collector_data" yaml:"collector_data" xml:"collector_data"`
+	CollectorData   interface{}       `json:"collector_data" yaml:"collector_data" xml:"collector_data"`
 }
 
 func NewSensorEvent(conn *ConnectionAttempt, record *geoip2.City) (event *SensorEvent, err error) {

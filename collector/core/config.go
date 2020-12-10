@@ -6,11 +6,13 @@ import (
 )
 
 type SensorConfig struct {
-	Name      string   `json:"name" yaml:"name" xml:"name"`
-	Host      string   `json:"host" yaml:"host" xml:"host"`
-	Latitude  float64  `json:"latitude" yaml:"latitude" xml:"latitude"`
-	Longitude float64  `json:"longitude" yaml:"longitude" xml:"longitude"`
-	Tags      []string `json:"tags" yaml:"tags" xml:"tags"`
+	Name         string   `json:"name" yaml:"name" xml:"name"`
+	Host         string   `json:"host" yaml:"host" xml:"host"`
+	Port         int      `json:"port" yaml:"port" xml:"port"`
+	PollInterval int      `json:"poll_interval" yaml:"poll_interval" xml:"poll_interval"`
+	Latitude     float64  `json:"latitude" yaml:"latitude" xml:"latitude"`
+	Longitude    float64  `json:"longitude" yaml:"longitude" xml:"longitude"`
+	Tags         []string `json:"tags" yaml:"tags" xml:"tags"`
 }
 
 type Configuration struct {
