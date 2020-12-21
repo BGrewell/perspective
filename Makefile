@@ -9,3 +9,6 @@ deploy:
 	scp sensor/geoip/geolite2.mmdb root@b.hosts.k3rn3l.io:/root/.
 	scp bin/sensor root@a.hosts.k3rn3l.io:/root/.
 	scp bin/sensor root@b.hosts.k3rn3l.io:/root/.
+
+deploy-web:
+	scp -r dashboard/src/* root@attackmap.grewelltech.com:/var/www/html/.

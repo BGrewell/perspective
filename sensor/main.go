@@ -3,14 +3,17 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/go-acme/lego/v4/challenge/dns01"
 	"github.com/BGrewell/perspective/helpers"
 	"github.com/BGrewell/perspective/sensor/geoip"
-	"github.com/BGrewell/perspective/sensor/iptables"
+	//"github.com/BGrewell/perspective/sensor/iptables"
 	"github.com/BGrewell/perspective/sensor/network"
-	"github.com/BGrewell/perspective/sensor/routes"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
+	"golang.org/x/crypto/acme/autocert"
 	"net/http"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -42,7 +45,13 @@ func EventsHandler(c *gin.Context) {
 
 func main() {
 
-	tcpPort := 9901
+	hostname := os.Getenv("SENSOR_HOSTNAME")
+	if strings.TrimSpace(hostname) == "" {
+		log.Fatal("You must set the 'SENSOR_HOSTNAME' env variable before launch")
+		os.Exit(1)
+	}
+
+	//tcpPort := 9901
 	//udpPort := 9902
 
 	// create cancelable context
@@ -55,10 +64,10 @@ func main() {
 	errChan := make(chan error, 10000)
 
 	// place route rule
-	routes.AddTProxyRoute()
+	//routes.AddTProxyRoute()
 
 	// place iptables rule
-	iptables.AddTProxyRule("tcp", tcpPort, 1)
+	//iptables.AddTProxyRule("tcp", tcpPort, 1)
 
 	// setup tcp sensor
 	tcp := network.TcpSensor{}
@@ -71,7 +80,23 @@ func main() {
 	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.GET("/events", EventsHandler)
-	go r.Run("0.0.0.0:65534")
+
+	// setup ssl
+	m := &autocert.Manager{
+		Cache: autocert.DirCache("/etc/autocert"),
+		Prompt: autocert.AcceptTOS,
+		HostPolicy: autocert.HostWhitelist(hostname),
+	}
+	srv := &http.Server{
+		Addr: ":https",
+		TLSConfig: m.TLSConfig(),
+		Handler: r,
+	}
+	go func() {
+		if err := srv.ListenAndServeTLS("", ""); err != nil {
+			log.Fatal(err)
+		}
+	}()
 
 	for {
 		conn := <- connChan
